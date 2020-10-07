@@ -1,0 +1,80 @@
+{
+	// Place your brillder workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"React Component": {
+		"scope": "typescriptreact",
+		"prefix": "component",
+		"body": [
+			"import React from 'react';",
+			"",
+			"class ${1:name} extends React.Component {",
+			"    render() {",
+			"        return (",
+			"            $0",
+			"        );",
+			"    }",
+			"}",
+			"",
+			"export default ${1:name};"
+		]
+	},
+	"React Functional Component": {
+		"scope": "typescriptreact",
+		"prefix": "fcomponent",
+		"body": [
+			"import React from 'react';",
+			"",
+			"const ${1:name}: React.FC = () => {",
+			"    return (",
+			"        $0",
+			"    );",
+			"};",
+			"",
+			"export default ${1:name};"
+		]
+	},
+	"React Functional Component with Props": {
+		"scope": "typescriptreact",
+		"prefix": "fpcomponent",
+		"body": [
+			"import React from 'react';",
+			"",
+			"interface ${1:name}Props {",
+			"    ${2:props}",
+			"}",
+			"",
+			"const ${1:name}: React.FC<${1:name}Props> = props => {",
+			"    return (",
+			"        $0",
+			"    );",
+			"};",
+			"",
+			"export default ${1:name};"
+		]
+	},
+	"Redux Map State": {
+		"scope": "typescriptreact",
+		"prefix": "mapState",
+		"body": [
+			"const mapState = (state: ReduxCombinedState) => ({",
+			"    $0",
+			"});",
+			"",
+			"const connector = connect(mapState);"
+		]
+	}
+}
