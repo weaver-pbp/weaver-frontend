@@ -10,15 +10,13 @@ const Homepage: React.FC = () => {
             >
                 <div className="container">
                     <div className="navbar-brand">
-                        <button className="navbar-item is-size-4">
-                            Weaver
-                        </button>
+                        <a className="navbar-item is-size-4">Weaver</a>
                     </div>
                     <div className="navbar-menu">
                         <div className="navbar-start">
-                            <button className="navbar-item">Home</button>
-                            <button className="navbar-item">About</button>
-                            <button className="navbar-item">Contact</button>
+                            <a className="navbar-item">Home</a>
+                            <a className="navbar-item">About</a>
+                            <a className="navbar-item">Contact</a>
                         </div>
                         <div className="navbar-end">
                             <div className="navbar-item">Contact</div>
