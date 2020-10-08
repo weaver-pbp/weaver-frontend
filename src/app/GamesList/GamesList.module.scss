@@ -1,0 +1,7 @@
+@import "src/scss/main.scss";
+
+.GamesList {
+    @extend .flex-column, .has-background-dark;
+
+    height: 100%;
+}

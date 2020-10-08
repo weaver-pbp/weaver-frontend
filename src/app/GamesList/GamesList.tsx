@@ -1,10 +1,13 @@
 import React from "react";
 import GameIcon from "./GameIcon/GameIcon";
-import "./GamesList.scss";
+import styles from "./GamesList.module.scss";
 
 const GamesList: React.FC = () => {
     return (
-        <div className="column is-narrow">
+        <div className={styles.GamesList}>
+            <GameIcon gameName="Uncharted Waters" />
+            <GameIcon gameName="Uncharted Waters" />
+            <GameIcon gameName="Uncharted Waters" />
             <GameIcon gameName="Uncharted Waters" />
         </div>
     );

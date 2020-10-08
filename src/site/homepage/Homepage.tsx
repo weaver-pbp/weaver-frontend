@@ -1,27 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
     return (
         <div className="app">
             <nav
-                className="navbar"
+                className="navbar is-dark"
                 role="navigation"
                 aria-label="main navigation"
             >
                 <div className="container">
                     <div className="navbar-brand">
-                        <a className="navbar-item is-size-4">Weaver</a>
+                        <div className="navbar-item is-size-4">Weaver</div>
                     </div>
                     <div className="navbar-menu">
                         <div className="navbar-start">
-                            <a className="navbar-item">Home</a>
-                            <a className="navbar-item">About</a>
-                            <a className="navbar-item">Contact</a>
+                            <div className="navbar-item">Home</div>
+                            <div className="navbar-item">About</div>
+                            <div className="navbar-item">Contact</div>
                         </div>
                         <div className="navbar-end">
-                            <div className="navbar-item">Contact</div>
-                            <div className="navbar-item">About</div>
-                            <div className="navbar-item">Home</div>
+                            <div className="navbar-item">
+                                <Link to="/app" className="button is-primary">
+                                    Go to App
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
