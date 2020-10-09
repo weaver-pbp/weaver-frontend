@@ -1,20 +1,48 @@
 import React from "react";
 
-import { store } from "redux/store";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 
 import styles from "./App.module.scss";
 
 import GamesList from "./GamesList/GamesList";
+import { Game } from "model/Game";
 
-const App: React.FC = () => {
+import { AppDispatch, AppState } from "redux/store";
+import * as gamesActions from "redux/games/actions";
+import LoadingScreen from "./LoadingScreen/LoadingScreen";
+
+interface AppProps {
+    games?: Game[];
+    loadGames(): void;
+}
+
+const App: React.FC<AppProps> = (props) => {
+    const [selectedGame, setSelectedGame] = React.useState(0);
+
+    if (!props.games) {
+        props.loadGames();
+        return <LoadingScreen />;
+    }
+
     return (
-        <Provider store={store}>
-            <div className={`${styles.App} flex-row`}>
-                <GamesList />
-            </div>
-        </Provider>
+        <div className={`${styles.App} flex-row`}>
+            <GamesList
+                games={props.games}
+                selected={selectedGame}
+                setSelected={setSelectedGame}
+            />
+        </div>
     );
 };
 
-export default App;
+const mapState = (state: AppState) => ({
+    games: state.games.games,
+});
+
+const mapDispatch = (dispatch: AppDispatch) => ({
+    loadGames: () => dispatch(gamesActions.loadGames()),
+});
+
+const connector = connect(mapState, mapDispatch);
+
+export default connector(App);

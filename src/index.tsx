@@ -10,6 +10,9 @@ import Homepage from "site/homepage/Homepage";
 import App from "app/App";
 import * as serviceWorker from "./serviceWorker";
 
+import { store } from "redux/store";
+import { Provider } from "react-redux";
+
 import "./index.scss";
 
 ReactDOM.render(
@@ -17,7 +20,9 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route exact path="/app">
-                    <App />
+                    <Provider store={store}>
+                        <App />
+                    </Provider>
                 </Route>
                 <Route exact path="/">
                     <Homepage />

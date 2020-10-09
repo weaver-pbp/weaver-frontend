@@ -1,0 +1,32 @@
+@import "src/scss/partials/variables";
+
+.container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .spinner {
+        color: $primary;
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            75% {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        animation-name: spin;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+    }
+}
