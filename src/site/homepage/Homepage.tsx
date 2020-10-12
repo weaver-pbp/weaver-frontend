@@ -1,7 +1,10 @@
+import useLoggedIn from "hooks/loggedIn";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
+    const isLoggedIn = useLoggedIn() ?? false;
+
     return (
         <div className="app">
             <nav
@@ -22,7 +25,7 @@ const Homepage: React.FC = () => {
                         <div className="navbar-end">
                             <div className="navbar-item">
                                 <Link to="/app" className="button is-primary">
-                                    Go to App
+                                    {isLoggedIn ? "Go to App" : "Log In"}
                                 </Link>
                             </div>
                         </div>

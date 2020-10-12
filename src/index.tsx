@@ -17,21 +17,21 @@ import "./index.scss";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
-            <Switch>
-                <Route exact path="/app">
-                    <Provider store={store}>
+        <Provider store={store}>
+            <Router>
+                <Switch>
+                    <Route exact path="/app">
                         <App />
-                    </Provider>
-                </Route>
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
-                <Route path="/">
-                    <Redirect to="/" />
-                </Route>
-            </Switch>
-        </Router>
+                    </Route>
+                    <Route exact path="/">
+                        <Homepage />
+                    </Route>
+                    <Route path="/">
+                        <Redirect to="/" />
+                    </Route>
+                </Switch>
+            </Router>
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );
