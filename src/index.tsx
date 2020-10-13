@@ -14,6 +14,7 @@ import { store } from "redux/store";
 import { Provider } from "react-redux";
 
 import "./index.scss";
+import Login from "site/login/Login";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -25,6 +26,9 @@ ReactDOM.render(
                     </Route>
                     <Route exact path="/">
                         <Homepage />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
                     </Route>
                     <Route path="/">
                         <Redirect to="/" />

@@ -31,7 +31,7 @@ const App: React.FC<AppProps> = (props) => {
         props.checkAuth();
         return <LoadingScreen />;
     } else if (props.isLoggedIn === false) {
-        return <Redirect to="/" />;
+        return <Redirect to="/login" />;
     }
 
     if (!props.user) {
