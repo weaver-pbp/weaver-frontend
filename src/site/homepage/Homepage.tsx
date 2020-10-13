@@ -23,11 +23,35 @@ const Homepage: React.FC = () => {
                             <div className="navbar-item">Contact</div>
                         </div>
                         <div className="navbar-end">
-                            <div className="navbar-item">
-                                <Link to="/app" className="button is-primary">
-                                    {isLoggedIn ? "Go to App" : "Log In"}
-                                </Link>
-                            </div>
+                            {isLoggedIn ? (
+                                <div className="navbar-item">
+                                    <Link
+                                        to="/app"
+                                        className="button is-primary"
+                                    >
+                                        Go to App
+                                    </Link>
+                                </div>
+                            ) : (
+                                <>
+                                    <div className="navbar-item">
+                                        <Link
+                                            to="/login"
+                                            className="button is-primary"
+                                        >
+                                            Login
+                                        </Link>
+                                    </div>
+                                    <div className="navbar-item">
+                                        <Link
+                                            to="/register"
+                                            className="button is-primary"
+                                        >
+                                            Register
+                                        </Link>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
