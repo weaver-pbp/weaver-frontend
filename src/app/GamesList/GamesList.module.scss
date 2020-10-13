@@ -5,3 +5,15 @@
 
     height: 100%;
 }
+
+.FeatherIcon {
+    color: $primary;
+    stroke-width: 0.75rem;
+}
+
+.Divider {
+    height: 0;
+    border-top: 1px solid $grey-light;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
