@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { AppDispatch, AppState } from "redux/store";
 import * as authActions from "redux/auth/actions";
 import styles from "./Login.module.scss";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import useLoggedIn from "hooks/loggedIn";
 import { Error, ErrorCode } from "utils/error";
 
@@ -73,11 +73,16 @@ const Login: React.FC<LoginProps> = (props) => {
                     )}
                 </div>
             </div>
-            <div className="field">
+            <div className="field is-grouped">
                 <div className="control">
                     <button className="button" onClick={tryLogin}>
                         Log In
                     </button>
+                </div>
+                <div className="control">
+                    <Link to="/register" className="button is-text">
+                        or Register
+                    </Link>
                 </div>
             </div>
         </div>

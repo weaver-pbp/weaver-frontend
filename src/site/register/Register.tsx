@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { AppDispatch, AppState } from "redux/store";
 import * as authActions from "redux/auth/actions";
 import styles from "./Register.module.scss";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import useLoggedIn from "hooks/loggedIn";
 import { Error, ErrorCode } from "utils/error";
 
@@ -87,11 +87,16 @@ const Register: React.FC<RegisterProps> = (props) => {
                     )}
                 </div>
             </div>
-            <div className="field">
+            <div className="field is-grouped">
                 <div className="control">
-                    <button className="button" onClick={tryRegister}>
-                        Log In
+                    <button className="button is-primary" onClick={tryRegister}>
+                        Register
                     </button>
+                </div>
+                <div className="control">
+                    <Link to="/login" className="button is-text">
+                        or Log In
+                    </Link>
                 </div>
             </div>
         </div>
