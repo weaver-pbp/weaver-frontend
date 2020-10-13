@@ -8,13 +8,14 @@ import {
 } from "react-router-dom";
 import Homepage from "site/homepage/Homepage";
 import App from "app/App";
+import Login from "site/login/Login";
+import Register from "site/register/Register";
 import * as serviceWorker from "./serviceWorker";
 
 import { store } from "redux/store";
 import { Provider } from "react-redux";
 
 import "./index.scss";
-import Login from "site/login/Login";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -29,6 +30,9 @@ ReactDOM.render(
                     </Route>
                     <Route exact path="/login">
                         <Login />
+                    </Route>
+                    <Route exact path="/register">
+                        <Register />
                     </Route>
                     <Route path="/">
                         <Redirect to="/" />

@@ -20,6 +20,24 @@ export const logIn = (email: string, password: string): AppThunk => async (
     }
 };
 
+export const register = (
+    email: string,
+    username: string,
+    password: string
+): AppThunk => async (dispatch: Dispatch) => {
+    try {
+        await axios.post(
+            `${process.env.REACT_APP_BACKEND_HOST}/auth/register`,
+            { email, username, password },
+            { withCredentials: true }
+        );
+        console.log("success??");
+        dispatch(loggedIn());
+    } catch (e) {
+        dispatch(loginFailure(e.response.data));
+    }
+};
+
 export const checkAuth = (): AppThunk => async (dispatch: Dispatch) => {
     try {
         console.log("checking auth");
