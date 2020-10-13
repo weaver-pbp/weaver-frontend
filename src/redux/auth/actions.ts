@@ -9,7 +9,7 @@ export const logIn = (email: string, password: string): AppThunk => async (
     dispatch: Dispatch
 ) => {
     try {
-        const result = await axios.post(
+        await axios.post(
             `${process.env.REACT_APP_BACKEND_HOST}/auth/login`,
             { email, password },
             { withCredentials: true }
