@@ -8,9 +8,13 @@ interface ErrorState {
 
 const ErrorInitialState: ErrorState = {};
 
-const reducer = (state = ErrorInitialState, action: types.ErrorAction) => {
+const reducer = (
+    state = ErrorInitialState,
+    action: types.ErrorAction
+): ErrorState => {
     switch (action.type) {
         case types.ERROR:
+            console.error(action);
             return { ...state, error: action.error, action: action.action };
         default:
             return state;

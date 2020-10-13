@@ -13,7 +13,16 @@ export const logIn = (email: string, password: string): AppThunk => async (
             { email, password },
             { withCredentials: true }
         );
-        dispatch(loggedIn());
+        if (result.status === 200) {
+            dispatch(loggedIn());
+        } else {
+            dispatch(
+                error(
+                    { message: "Login failed.", response: result },
+                    { type: "LOGIN" }
+                )
+            );
+        }
     } catch (e) {
         dispatch(error(e, { type: "LOGIN" }));
     }
