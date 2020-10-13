@@ -5,9 +5,10 @@ import * as authActions from "redux/auth/actions";
 import styles from "./Login.module.scss";
 import { Redirect } from "react-router-dom";
 import useLoggedIn from "hooks/loggedIn";
+import { Error, ErrorCode } from "utils/error";
 
 interface LoginProps {
-    isLoggedIn?: boolean;
+    loginError?: Error;
     login(email: string, password: string): void;
 }
 
@@ -19,6 +20,12 @@ const Login: React.FC<LoginProps> = (props) => {
     if (isLoggedIn) {
         return <Redirect to="/app" />;
     }
+
+    const isEmailError =
+        props.loginError && props.loginError.code === ErrorCode.USER_NOT_FOUND;
+    const isPasswordError =
+        props.loginError &&
+        props.loginError.code === ErrorCode.PASSWORD_INCORRECT;
 
     const tryLogin = () => {
         props.login(email, password);
@@ -34,10 +41,15 @@ const Login: React.FC<LoginProps> = (props) => {
                     <input
                         name="email"
                         type="text"
-                        className="input"
+                        className={"input" + (isEmailError ? " is-danger" : "")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+                    {isEmailError && (
+                        <p className="help is-danger">
+                            {props.loginError?.message}
+                        </p>
+                    )}
                 </div>
             </div>
             <div className="field">
@@ -48,10 +60,17 @@ const Login: React.FC<LoginProps> = (props) => {
                     <input
                         name="password"
                         type="password"
-                        className="input"
+                        className={
+                            "input" + (isPasswordError ? " is-danger" : "")
+                        }
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    {isPasswordError && (
+                        <p className="help is-danger">
+                            {props.loginError?.message}
+                        </p>
+                    )}
                 </div>
             </div>
             <div className="field">
@@ -66,7 +85,7 @@ const Login: React.FC<LoginProps> = (props) => {
 };
 
 const mapState = (state: AppState) => ({
-    isLoggedIn: state.auth.loggedIn,
+    loginError: state.auth.loginError,
 });
 
 const mapDispatch = (dispatch: AppDispatch) => ({

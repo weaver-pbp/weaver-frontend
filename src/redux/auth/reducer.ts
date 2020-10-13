@@ -1,11 +1,14 @@
 import * as types from "./types";
+import { Error } from "utils/error";
 
 interface AuthState {
     loggedIn?: boolean;
+    loginError?: Error;
 }
 
 const AuthInitialState: AuthState = {
     loggedIn: undefined,
+    loginError: undefined,
 };
 
 const reducer = (
@@ -14,9 +17,11 @@ const reducer = (
 ): AuthState => {
     switch (action.type) {
         case types.LOGGED_IN:
-            return { ...state, loggedIn: true };
+            return { loggedIn: true };
         case types.LOGGED_OUT:
-            return { ...state, loggedIn: false };
+            return { loggedIn: false };
+        case types.LOGIN_FAILURE:
+            return { loggedIn: false, loginError: action.error };
         default:
             return state;
     }

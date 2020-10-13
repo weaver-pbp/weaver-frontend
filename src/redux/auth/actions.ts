@@ -2,6 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { error } from "redux/error/actions";
 import { AppThunk } from "redux/store";
+import { Error } from "utils/error";
 import * as types from "./types";
 
 export const logIn = (email: string, password: string): AppThunk => async (
@@ -13,18 +14,9 @@ export const logIn = (email: string, password: string): AppThunk => async (
             { email, password },
             { withCredentials: true }
         );
-        if (result.status === 200) {
-            dispatch(loggedIn());
-        } else {
-            dispatch(
-                error(
-                    { message: "Login failed.", response: result },
-                    { type: "LOGIN" }
-                )
-            );
-        }
+        dispatch(loggedIn());
     } catch (e) {
-        dispatch(error(e, { type: "LOGIN" }));
+        dispatch(loginFailure(e.response.data));
     }
 };
 
@@ -52,4 +44,9 @@ const loggedIn = () => ({
 
 const loggedOut = () => ({
     type: types.LOGGED_OUT,
+});
+
+const loginFailure = (error: Error) => ({
+    type: types.LOGIN_FAILURE,
+    error,
 });
