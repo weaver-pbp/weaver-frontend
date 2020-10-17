@@ -3,6 +3,7 @@
     border: none;
     margin: 0;
     padding: 0;
+    outline: none; // bad for accessibility, ideally come up with an alternative.
 
     figure {
         cursor: pointer;
