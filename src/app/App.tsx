@@ -14,6 +14,7 @@ import * as gamesActions from "redux/games/actions";
 import LoadingScreen from "./LoadingScreen/LoadingScreen";
 import { User } from "model/User";
 import { Redirect } from "react-router-dom";
+import NewGamePopup from "./NewGamePopup/NewGamePopup";
 
 interface AppProps {
     isLoggedIn?: boolean;
@@ -26,6 +27,7 @@ interface AppProps {
 
 const App: React.FC<AppProps> = (props) => {
     const [selectedGame, setSelectedGame] = React.useState(0);
+    const [newGamePopupOpen, setNewGamePopupOpen] = React.useState(false);
 
     if (props.isLoggedIn === undefined) {
         props.checkAuth();
@@ -50,6 +52,11 @@ const App: React.FC<AppProps> = (props) => {
                 games={props.games}
                 selected={selectedGame}
                 setSelected={setSelectedGame}
+                openNewGamePopup={() => setNewGamePopupOpen(true)}
+            />
+            <NewGamePopup
+                open={newGamePopupOpen}
+                close={() => setNewGamePopupOpen(false)}
             />
         </div>
     );
