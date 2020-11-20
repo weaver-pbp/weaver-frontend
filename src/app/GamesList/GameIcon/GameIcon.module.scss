@@ -1,11 +1,19 @@
+@import "src/scss/main.scss";
+
 .icon-button {
+    position: relative;
     background: none;
     border: none;
     margin: 0;
     padding: 0;
 
     &:focus {
-        outline: white dotted 3px;
+        .content {
+            outline: white dotted 3px;
+        }
+        .label {
+            display: inline;
+        }
     }
 
     figure {
@@ -24,5 +32,42 @@
     .is-active,
     .is-inactive:hover {
         border-radius: 33%;
+    }
+
+    &:focus,
+    .content:focus {
+        outline: none;
+    }
+
+    .label {
+        display: none;
+        background-color: black;
+        color: $text;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 110%;
+        white-space: nowrap;
+        text-align: center;
+        border-radius: 5pt;
+        padding: 1em;
+
+        &::before {
+            content: "";
+            width: 0px;
+            height: 0px;
+            border: 0.8em solid transparent;
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-right: 1em solid black;
+        }
+    }
+
+    &:hover {
+        .label {
+            display: inline;
+        }
     }
 }
