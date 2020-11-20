@@ -1,9 +1,9 @@
 import { Game } from "model/Game";
 import React from "react";
 import GameIcon from "./GameIcon/GameIcon";
-import styles from "./GamesList.module.scss";
+import WeaverIcon from "./WeaverIcon/WeaverIcon";
 
-import { ReactComponent as FeatherIcon } from "assets/icons/feather.svg";
+import styles from "./GamesList.module.scss";
 
 interface GamesListProps {
     games: Game[];
@@ -14,9 +14,7 @@ interface GamesListProps {
 const GamesList: React.FC<GamesListProps> = (props) => {
     return (
         <div className={styles.GamesList}>
-            <figure className="image is-64x64 m-2">
-                <FeatherIcon className={styles.FeatherIcon} />
-            </figure>
+            <WeaverIcon onClick={() => console.log("Create new game...")} />
             <div className={styles.Divider} />
             {props.games.map((game, idx) => (
                 <GameIcon

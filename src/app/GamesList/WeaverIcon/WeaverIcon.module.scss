@@ -1,0 +1,7 @@
+@import "src/scss/main.scss";
+@import "../GameIcon/GameIcon.module.scss";
+
+.FeatherIcon {
+    color: $primary;
+    stroke-width: 0.75rem;
+}
