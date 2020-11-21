@@ -16,6 +16,7 @@ import { store } from "redux/store";
 import { Provider } from "react-redux";
 
 import "./index.scss";
+import JoinGame from "site/join-game/JoinGame";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -33,6 +34,9 @@ ReactDOM.render(
                     </Route>
                     <Route exact path="/register">
                         <Register />
+                    </Route>
+                    <Route exact path="/join/:token">
+                        <JoinGame />
                     </Route>
                     <Route path="/">
                         <Redirect to="/" />

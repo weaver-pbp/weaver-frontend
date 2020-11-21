@@ -1,0 +1,14 @@
+@import "src/scss/main.scss";
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    background-color: $grey-dark;
+    min-width: 40%;
+    padding: 4em;
+    border-radius: 2em;
+    height: auto;
+}
